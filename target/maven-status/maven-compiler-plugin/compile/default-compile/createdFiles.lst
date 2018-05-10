@@ -1,5 +1,0 @@
-com\tunyl\senence\RandomSentenceSpout.class
-com\tunyl\senence\CountBolt.class
-com\tunyl\senence\CountBolt$statRunnable.class
-com\tunyl\senence\SplitBolt.class
-com\tunyl\senence\WordCountTopology.class
