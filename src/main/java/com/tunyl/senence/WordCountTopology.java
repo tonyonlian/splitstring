@@ -66,10 +66,11 @@ public class WordCountTopology {
                 .shuffleGrouping("sentence-spout");
         //声明Bolt名称Id为count-bolt，并行度1
         builder.setBolt("count-bolt", new CountBolt(), 1)
-                //设置该Bolt的数据源为sentence-spout和split-bolt的输出
+                //设置该Bolt的数据源为sentence-spout和split-bolt的输出,这样就可以统计到句子数计数与切分单词的计数
                 //fieldsGrouping保证相同word对应的值发送到同一个Task节点，这是单词计数业务需要
                 .fieldsGrouping("split-bolt", new Fields("word"))
-                .fieldsGrouping("sentence-spout", new Fields("word"));
+                //统计随机取出的句子计数，如果不想计数句子可注释掉本行代码
+               .fieldsGrouping("sentence-spout", new Fields("word"));
 
 
         return builder;
